@@ -1,16 +1,14 @@
 const fs = require('fs-extra');
-const Docs = require(__dirname + '/../lib/Docs');
-const docs = new Docs();
+const Doc = require(__dirname + '/../lib/Doc');
+const doc = new Doc();
 
-docs.parse({
+doc.parse({
   srcDoc: fs.readFileSync(__dirname + '/doc.md', 'utf-8')
 });
 
-docs.render({
+doc.render({
   template: fs.readFileSync(__dirname + '/theme/template.html', 'utf-8'),
   templatePath: __dirname + '/theme'
 });
 
-console.log('[result]', docs.getHtml());
-
-
+console.log('[result]', doc.getHtml());
