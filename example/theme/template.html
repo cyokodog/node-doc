@@ -1,4 +1,28 @@
-<%- _include('partials/header.html') %>
-<%- contents %>
-<%- _include('partials/footer.html') %>
+<%- $include('partials/header.html') %>
 
+<h1><%= attr.title %></h1>
+<ul>
+  <li><%= attr.date %></li>
+  <li><%= attr.auther %></li>
+</ul>
+
+<%- contents %>
+
+<hr/>
+
+<h2>Original Markdown</h2>
+
+<pre>
+<%- markdownBody %>
+</pre>
+
+<h2>Data</h2>
+<% const keyLength = Object.keys(data).length; %>
+<%- $if(keyLength, tag('p', `data count is ${keyLength}`)) %>
+<ul>
+<% for(var i in data){ %>
+<%- tag('li', `${i} value is ${data[i]}`) %>
+<% } %>
+</ul>
+
+<%- $include('partials/footer.html') %>
